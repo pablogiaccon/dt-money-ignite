@@ -7,7 +7,6 @@
     "plugin:react/recommended",
     "airbnb",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
   "globals": {
@@ -30,6 +29,7 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/jsx-curly-newline": "off",
     "import/no-duplicates": "off",
+    "no-use-before-define":"off",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
@@ -38,6 +38,8 @@
     "no-unused-expressions": "off",
     "no-nested-ternary": "off",
     "no-extra-boolean-cast": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-one-expression-per-line": "off",
     "no-inner-declarations": "off",
     "jsx-a11y/no-static-element-interactions": "off",
@@ -48,11 +50,6 @@
     "no-plusplus": "off",
     "no-console": "off",
     "jsx-a11y/control-has-associated-label": "off",
-    "@typescript-eslint/interface-name-prefix": [
-      "error",
-      { "prefixWithI": "always" }
-    ],
-
     "import/extensions": [
       "error",
       "ignorePackages",
