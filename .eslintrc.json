@@ -37,6 +37,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "no-unused-expressions": "off",
     "no-nested-ternary": "off",
+    "no-sequences":"off",
     "no-extra-boolean-cast": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
