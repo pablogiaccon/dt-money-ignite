@@ -1,4 +1,11 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { api } from '../services/api';
 
 type Transaction = {
@@ -10,6 +17,12 @@ type Transaction = {
   createdAt: string;
 };
 
+type Summary = {
+  deposit: number;
+  withdraw: number;
+  total: number;
+};
+
 type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>;
 
 interface TransactionsProviderProps {
@@ -18,15 +31,37 @@ interface TransactionsProviderProps {
 
 interface TransactionsContextDate {
   transactions: Array<Transaction>;
+  summary: Summary;
   createTransaction: (transaction: TransactionInput) => Promise<void>;
 }
 
-export const TransactionsContext = createContext<TransactionsContextDate>(
+const TransactionsContext = createContext<TransactionsContextDate>(
   {} as TransactionsContextDate,
 );
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const summary = useMemo(() => {
+    const summaryTemp = transactions.reduce(
+      (acc: Summary, transaction) => {
+        if (transaction.type === 'deposit') {
+          acc.deposit += transaction.amount;
+          acc.total += transaction.amount;
+        } else {
+          acc.withdraw += transaction.amount;
+          acc.total -= transaction.amount;
+        }
+        return acc;
+      },
+      {
+        deposit: 0,
+        withdraw: 0,
+        total: 0,
+      },
+    );
+
+    return summaryTemp;
+  }, [transactions]);
 
   useEffect(() => {
     api.get('/transactions').then(response => {
@@ -47,8 +82,16 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   }
 
   return (
-    <TransactionsContext.Provider value={{ transactions, createTransaction }}>
+    <TransactionsContext.Provider
+      value={{ transactions, summary, createTransaction }}
+    >
       {children}
     </TransactionsContext.Provider>
   );
+}
+
+export function useTransactions() {
+  const context = useContext(TransactionsContext);
+
+  return context;
 }

@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 import { Header } from './components/Header';
 import { NewTransactionModal } from './components/NewTransactionModal';
-import { TransactionsProvider } from './context/TransactionsContext';
+import { TransactionsProvider } from './hook/useTransactions';
 import { Dashboard } from './pages/Dashboard';
 import { GlobalStyle } from './styles/global';
 
