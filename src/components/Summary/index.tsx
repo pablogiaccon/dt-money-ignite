@@ -10,8 +10,8 @@ export function Summary() {
     <Container>
       <div>
         <header>
-          <p>Entradas</p>
-          <img src={incomeImg} alt="Entradas" />
+          <p>Deposit</p>
+          <img src={incomeImg} alt="Deposit" />
         </header>
 
         <strong>
@@ -24,8 +24,8 @@ export function Summary() {
 
       <div>
         <header>
-          <p>Saídas</p>
-          <img src={outcomeImg} alt="Saídas" />
+          <p>Withdraw</p>
+          <img src={outcomeImg} alt="Withdraw" />
         </header>
 
         <strong>

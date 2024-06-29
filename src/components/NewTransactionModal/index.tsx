@@ -52,17 +52,17 @@ export function NewTransactionModal({
         <img src={closeImg} alt="Fechar modal" />
       </button>
       <Container onSubmit={handleCreateNewTransaction}>
-        <h2>Cadastrar transação</h2>
+        <h2>Register transaction</h2>
 
         <input
           type="text"
-          placeholder="Título"
+          placeholder="Title"
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
         <input
           type="number"
-          placeholder="Valor"
+          placeholder="Value"
           value={amount}
           onChange={e => setAmount(Number(e.target.value))}
         />
@@ -74,7 +74,7 @@ export function NewTransactionModal({
             onClick={() => setType('deposit')}
             activeColor="green"
           >
-            <img src={incomeImg} alt="Entrada" /> <span>Entrada</span>
+            <img src={incomeImg} alt="Deposit" /> <span>Deposit</span>
           </RadioBox>
 
           <RadioBox
@@ -83,18 +83,18 @@ export function NewTransactionModal({
             onClick={() => setType('withdraw')}
             activeColor="red"
           >
-            <img src={outcomeImg} alt="Saída" /> <span>Saída</span>
+            <img src={outcomeImg} alt="Withdraw" /> <span>Withdraw</span>
           </RadioBox>
         </TransactionTypeContainer>
 
         <input
           type="text"
-          placeholder="Categoria"
+          placeholder="Category"
           value={category}
           onChange={e => setCategory(e.target.value)}
         />
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Submit</button>
       </Container>
     </Modal>
   );
